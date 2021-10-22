@@ -1,0 +1,192 @@
+/* @charset "utf-8";
+/* CSS Document #0087be 
+* {
+	font-family:Verdana, Geneva, sans-serif; 
+	font-size-adjust:100%/1.4; 
+	box-sizing:border-box;}
+body {
+	padding:0; 
+	margin:0; 
+	background-color:#EEE; 
+	color:#333; 
+	font-size:16px;}
+
+
+header {
+	padding:5px 20px;
+	background-color:#FFF;
+	text-align:center;
+	border-top:solid #0087BE;
+	box-shadow:0 1px 2px 0 #DDD;}
+header span {
+	display:none;}	
+header img {
+	width:40px;}	
+header h2 {
+	margin:5px 0 0 -5px;
+	padding:0;
+	color:#0087BE;
+	display:inline-block;
+	vertical-align:top;}
+	
+	
+nav {
+	margin:60px auto 0;
+	padding:10px;
+	width:1024px;
+	font-size:14px;	
+	border-bottom:solid thin #CCC;}
+nav a {
+	color:#E11;}
+nav ul {
+	margin:0;
+	padding:0;
+	list-style-type:none;
+	float:right;}
+nav ul li {
+	margin:0 10px;
+	display:inline-block}
+nav ul li a {
+	color:#0087BE;
+	text-decoration:none;}
+nav ul li a:hover {
+	text-decoration:underline;}	 */
+
+main {
+  margin: 0 auto;
+}
+main form {
+  padding: 25px 15px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px 0 #ddd;
+}
+main form fieldset {
+  border: none;
+}
+main form legend {
+  font-size: 24px;
+}
+main form label {
+  margin-top: 20px;
+  color: #0087be;
+  font-size: 14px;
+  cursor: pointer;
+  display: block;
+}
+main form input,
+select {
+  padding: 10px 0;
+  width: 100%;
+  border: none;
+  border-bottom: solid thin #ddd;
+  display: block;
+}
+main form input:focus {
+  border-color: #0087be;
+}
+main form button {
+  margin-top: 15px;
+  padding: 14px 10px;
+  width: 100%;
+  font-weight: bold;
+  border: none;
+  border: solid thin;
+}
+main form button.primary {
+  background-color: #0087be;
+  color: #fff;
+  border-color: #0087be;
+}
+main form button.primary:hover {
+  background-color: #fff;
+  color: #0087be;
+}
+main form button.secondary {
+  background-color: #555;
+  color: #fff;
+  border-color: #555;
+}
+main form button.secondary:hover {
+  background-color: #fff;
+  color: #555;
+}
+
+main table {
+  background-color: #fff;
+  font-size: 14px;
+  border-collapse: collapse;
+  box-shadow: 0 2px 4px 0 #ddd;
+}
+main table tr {
+  vertical-align: top;
+}
+main table tr th {
+  padding: 15px 10px;
+  text-align: left;
+  border-bottom: solid #ddd;
+}
+main table tr td {
+  padding: 5px 10px;
+  border: none;
+  border-bottom: solid thin #ddd;
+}
+main table tr td button {
+  padding: 6px;
+  background-color: #fff;
+  color: #e11;
+  border: solid thin #e11;
+  border-radius: 2px;
+  cursor: pointer;
+}
+main table tr td button:hover {
+  background-color: #e11;
+  color: #fff;
+}
+main table tr td button:active {
+  background-color: #000;
+}
+main table tr:hover td {
+  background-color: #eee;
+}
+main table tr td.nowrap {
+  white-space: nowrap;
+}
+
+main section {
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px 0 #ddd;
+}
+main section table {
+  border-collapse: separate;
+}
+main section table tr td {
+  padding: 10px 15px;
+  text-align: center;
+  border: none;
+}
+main section table tr th {
+  padding: 0 15px 15px;
+  text-align: center;
+  border: none;
+}
+main section var {
+  text-align: right;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: normal;
+}
+main section var.high {
+  color: green;
+}
+main section var.low {
+  color: red;
+}
+
+footer {
+  bottom: 20px;
+  position: fixed;
+  width: 100%;
+  text-align: center;
+  text-shadow: 0 1px #fff;
+  font-size: 14px;
+}

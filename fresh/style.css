@@ -1,0 +1,22 @@
+.cont {
+  min-height: 20vh;
+  background: rgb(238, 234, 234);
+}
+
+#btn {
+  padding: 2rem;
+  margin: 1rem;
+
+  background: black;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+#btn:hover {
+  background: gainsboro;
+  color: black;
+}
+body {
+  background: rgb(179, 176, 176);
+}

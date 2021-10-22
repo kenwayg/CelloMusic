@@ -1,0 +1,440 @@
+function getContent(fragmentId, myCallback) {
+  let xhr = new XMLHttpRequest();
+  loader.classList.add("active");
+  xhr.onload = function () {
+    myCallback(xhr.responseText);
+    loader.classList.add("hidden");
+    loader.classList.remove("active");
+  };
+  //Fetch the partial html files
+  xhr.open("GET", fragmentId + ".php");
+  // launch();
+
+  xhr.send();
+}
+// window.onload = function () {
+//   loader.classList.remove("active");
+// };
+
+const loader = document.querySelector(".loading"),
+  app = document.querySelector("#app");
+// function launch() {
+//   setTimeout(() => {
+//     loader.style.opacity = "0";
+//     loader.style.display = "none";
+//     app.style.display = "block";
+//   }, 4000);
+//   setTimeout((app.style.opacity = "1"), 50);
+// }
+
+function navigate() {
+  const content = document.querySelector("#app");
+  fragmentId = location.hash.substr(1);
+  //Display current pages content
+  getContent(fragmentId, (comp) => {
+    content.innerHTML = comp;
+    /////PROFILE JS
+    if (location.hash == "#profile") {
+      var x = document.querySelector(".wr");
+      x.onclick = function () {
+        alert("ede");
+      };
+      const prof_image = document.querySelector(".profile_image");
+      // btn = document.querySelector(".btn");
+
+      // console.log(prof_image);
+      // btn.onclick = function () {
+      //   console.log(prof_image.value);
+      // };
+      //Get the Modal
+      const modal = document.querySelector(".modal"),
+        //Get the close button
+        closeBtn = document.querySelector(".closeBtn"),
+        //Get modal content paragraph
+        modPara = document.querySelector(".para");
+
+      const modClose = () => {
+        modal.style.display = "none";
+      };
+
+      closeBtn.addEventListener("click", modClose);
+      prof_image.onchange = function () {
+        ///DO EPIC SHIT
+
+        const file = prof_image.files[0];
+
+        modal.style.display = "block";
+        modPara.innerHTML = `The file you selected is ${file.name}`;
+      };
+
+      //Profile header
+      const prof_header = document.querySelector(".profile_header");
+
+      //Get the Modal
+      const modal2 = document.querySelector(".modal2"),
+        //Get the close button
+        closeBtn2 = document.querySelector(".closeBtn2"),
+        //Get modal content paragraph
+        modPara2 = document.querySelector(".para2");
+      var x = document.querySelector(".wr");
+
+      const modClose2 = () => {
+        modal2.style.display = "none";
+      };
+
+      closeBtn.addEventListener("click", modClose2);
+      prof_header.onchange = function () {
+        ///DO EPIC SHIT
+
+        const file2 = prof_header.files[0];
+
+        modal2.style.display = "block";
+        modPara2.innerHTML = `The file you selected is ${file2.name}`;
+      };
+      const like = document.querySelectorAll(".basi");
+      console.log(like.length);
+    }
+    /////HOME JS
+    if (location.hash == "#home") {
+      const like = document.querySelectorAll(".basi");
+      let song = document.querySelector(".nun");
+      let like_play = document.querySelectorAll(".like_play");
+      let img = document.querySelector(".cov");
+      let c = document.querySelector(".aud");
+      let play_btn = document.querySelector(".play-btn");
+      let pause_btn = document.querySelector(".pa");
+      const first = document.querySelectorAll(".first");
+      const cov = document.querySelectorAll(".pass");
+      let playing = true;
+      let songs = document.querySelectorAll("[data-file]");
+      let u = c.getAttribute("data-file");
+      let nu;
+      // PLAYBAR FUNCTIONALITY
+      c.addEventListener("timeupdate", updateProgress);
+      c.onended = function () {
+        play_btn.style.display = "block";
+        pause_btn.style.display = "none";
+        c.duration = 0;
+        next();
+      };
+      function updateProgress() {
+        //progress bar
+        // let progress = document.querySelectorAll(".progress");
+        var progress = $(".progress");
+        //song position @ zero
+        let value = 0;
+        if (c.duration == "Infinity") {
+          //song is infinite in length
+          value = 100;
+        } else if (c.currentTime > 0) {
+          //songs current time is past 0
+          value = Math.floor((100 / c.duration) * c.currentTime);
+        }
+        // animate every 5seconds
+        progress.stop().animate({ width: value + "%" }, 500);
+        //display timestamp
+        document.querySelector("#time").innerHTML = formatTime(c.currentTime); //set the new timestamp
+        document.querySelector("#total-time").innerHTML = formatTime(
+          c.duration
+        ); //set total timestamp
+      }
+      function formatTime(time) {
+        //Change time formaT
+        minutes = Math.floor(time / 60);
+        minutes = minutes >= 10 ? minutes : "" + minutes;
+        seconds = Math.floor(time % 60);
+        seonds = time >= 10 ? seconds : "0" + seconds;
+        return minutes + ":" + seconds;
+      }
+      for (let i = 0; i < like.length; i++) {
+        like[i].onclick = function (e) {
+          e.preventDefault();
+          let p = e.target;
+          let fn = p;
+          let b = fn.getAttribute("data-file");
+          u = b;
+          console.log(b);
+          let src = "../admin/uploads/" + b;
+          console.log(src);
+          let z = cov[i].getAttribute("src");
+          // console.log(z + "z");
+          console.log("b " + b);
+          img.src = z;
+          nu = fn.getAttribute("data-id");
+          nu -= 1;
+          console.log("nu " + nu);
+          //PLAY
+          c.setAttribute("data-id", nu);
+          let m = c.getAttribute("src");
+          console.log(m);
+          console.log("c.src" + src);
+          console.log("m.src" + m);
+          //BOTTOM PLAYBAR LOGIC
+          play_btn.style.display = "none";
+          pause_btn.style.display = "block";
+
+          play_btn.setAttribute("data-file", src);
+          c.setAttribute("data-file", src);
+          let catt = c.getAttribute("data-file");
+          if (p) {
+            console.log(p);
+            like[i].src = "./images/pause.svg";
+          }
+
+          //PLAYING FUNCTIONALITY
+          // src=current music playing
+          if (src == m && playing) {
+            like[i].src = "./images/pause.svg";
+            play_btn.style.display = "none";
+            pause_btn.style.display = "block";
+            playing = false;
+            c.play();
+            console.log("current" + src);
+          } else if (playing == false && src == m) {
+            like[i].src = "./images/play.svg";
+            play_btn.style.display = "block";
+            pause_btn.style.display = "none";
+            playing = true;
+            c.pause();
+          }
+          // to play a new track and disrupt the former current track
+          else if (src != m) {
+            like[i].src = "./images/pause.svg";
+            console.log("oldtrack: " + m);
+            console.log("newtrack: " + src);
+            c.setAttribute("src", src);
+            c.setAttribute("data-file", u);
+            playing = false;
+            c.play();
+            console.log(c.src + "ry");
+          }
+          if (catt != b) {
+            // like[i].src = "./images/pause.svg";
+            // alert("trf")
+          }
+        };
+      }
+      pause_btn.onclick = function (e) {
+        e.preventDefault();
+        c.pause();
+        play_btn.style.display = "block";
+        pause_btn.style.display = "none";
+        playing = true;
+      };
+      play_btn.onclick = function (e) {
+        e.preventDefault();
+        let a = c.getAttribute("data-file");
+        let m = c.getAttribute("src");
+        console.log(m);
+        console.log(a);
+        if (a == m) {
+          c.play();
+          playing = false;
+          pause_btn.style.display = "block";
+          play_btn.style.display = "none";
+        } else {
+          alert("no track yet");
+          // c.play();
+          // $(".pa").css("display", "block");
+          // $(".play-btn").css("display", "none");
+        }
+      };
+
+      console.log(first.length);
+      //HOVER
+      for (let i = 0; i < first.length; i++) {
+        first[i].onmouseenter = function () {
+          like_play[i].style.transition = "all 0.8s ease-in";
+          let heart = like[i].getAttribute("data-file");
+          let m = c.getAttribute("src");
+
+          let g = "../admin/uploads/" + heart;
+
+          like[i].style.display = "block";
+
+          like_play[i].style.display = "block";
+          if (m != g) {
+            like[i].src = "./images/play.svg";
+          } else if (c.paused && m == g) {
+            like[i].src = "./images/play.svg";
+          } else {
+            like[i].src = "./images/pause.svg";
+          }
+        };
+        first[i].onmouseleave = function () {
+          let heart = like[i].getAttribute("data-file");
+          let m = c.getAttribute("src");
+          let g = "../admin/uploads/" + heart;
+          // if (!c.paused && m == g) {
+          //   bass[i].style.display = "block";
+          // }
+          //  else  {
+          //   bass[i].style.display = "none";
+          // }
+          like_play[i].style.display = "none";
+          // if (bass[i].src == `./images/pause.svg`) {
+          //   console.log("jd");
+        };
+      }
+      //////LIKE FUNCTIONALITY
+      var btn;
+      $(".af").on("click", function () {
+        var music_id = $(this).data("id");
+        // console.log("inside vagina " + music_id);
+
+        $clicked_btn = $(this);
+        console.log($clicked_btn);
+        if ($clicked_btn.hasClass("heart-inactive")) {
+          action = "like";
+          // alert("dollar");
+
+          alert("Track has been added to your likes");
+        } else if ($clicked_btn.hasClass("heart-active")) {
+          action = "unlike";
+          alert("Track has been removed from your likes");
+        }
+        $.ajax({
+          url: "./home.php",
+          // riochet-oomie
+          type: "post",
+          data: {
+            action: action,
+            music_id: music_id,
+          },
+          success: function (data) {
+            // res = JSON.parse(data);
+            if (action == "like") {
+              $clicked_btn.removeClass("heart-inactive");
+              $clicked_btn.addClass("heart-active");
+            } else if (action == "unlike") {
+              $clicked_btn.removeClass("heart-active");
+              $clicked_btn.addClass("heart-inactive");
+            }
+            // alert(res.likes);
+          },
+        });
+      });
+      // const back = () => {
+      //   alert("YO!! You must be logged in to do that ");
+      //   window.location.href = "./login.php";
+      // };
+      //playlist
+      let playlist = [];
+      const retroArray = [...songs];
+      for (let i = 0; i < songs.length; i++) {
+        let m = retroArray[i].getAttribute("data-file");
+        playlist.push(m);
+        console.log(playlist);
+      }
+
+      $(".next").click(next);
+      $(".previous").click(prev);
+      let n = -1;
+      function next() {
+        console.log("nu" + nu);
+        // n++;
+        // nu = n;
+        // n = nu;
+        // nu = n;
+        console.log(n);
+
+        if (n >= playlist.length) {
+          n = 0;
+        }
+        pause_btn.style.display = "block";
+        play_btn.style.display = "none";
+        console.log(playlist[n]);
+
+        // if (c.src == u) {
+        //   // alert("us against whatever");
+        //   n = 1;
+        // }
+        nu = c.getAttribute("data-id");
+        // console.log(playlist.n);
+        // n = playlist[n];
+        // console.log("n" + n);
+
+        // INCREAMENT DATAID
+        // n++;
+
+        if (playlist[n] == u) {
+          // alert("us against whatever");
+          n += 0;
+          c.setAttribute("data-id", n);
+        }
+        if (n <= nu) {
+          n = nu;
+          console.log("n" + n);
+          n++;
+          // alert("us against whatever");
+        } else {
+          n = nu;
+          n++;
+        }
+        let z = cov[n].getAttribute("src");
+        img.src = z;
+        c.src = `../admin/uploads/` + playlist[n];
+        let p = `../admin/uploads/` + playlist[n];
+        // let y= c.getAttribute("data-file");
+        if (c.paused) {
+          c.setAttribute("data-file", p);
+        }
+
+        // console.log(n++);
+        c.setAttribute("data-id", n);
+        c.play();
+        console.log("new" + nu);
+      }
+      // alert("red");
+      function prev() {
+        if (n < -1) {
+          n = 0;
+        }
+        pause_btn.style.display = "block";
+        play_btn.style.display = "none";
+        nu = c.getAttribute("data-id");
+        // if (playlist[n] == c.src) {
+        // }
+        if (playlist[n] == u) {
+          // alert("us against whatever");
+          n--;
+        }
+        if (playlist[n] == u) {
+          // alert("us against whatever");
+          n += 0;
+          c.setAttribute("data-id", n);
+        }
+        if (n <= nu) {
+          n = nu;
+          console.log("n" + n);
+          n--;
+          // alert("us against whatever");
+        } else {
+          n = nu;
+          n--;
+        }
+        let z = cov[n].getAttribute("src");
+        img.src = z;
+        let p = `../admin/uploads/` + playlist[n];
+        c.src = `../admin/uploads/` + playlist[n];
+        // console.log(n++);
+        if (c.paused) {
+          c.setAttribute("data-file", p);
+        }
+        c.setAttribute("data-id", n);
+
+        c.play();
+      }
+    }
+  });
+}
+//Make Homepage default
+if (!location.hash) {
+  location.hash = "#home";
+}
+let fragmentId = location.hash;
+if (location.hash == fragmentId) {
+  navigate();
+}
+window.addEventListener("hashchange", navigate);
+///mae data-id=datafile on pause

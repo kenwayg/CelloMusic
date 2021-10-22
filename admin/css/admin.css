@@ -1,0 +1,64 @@
+body {
+  background-color: #f5f5f5 !important;
+}
+
+/* ..................root default */
+.lust {
+  background: linear-gradient(to top, #333333, #dd1818) !important;
+  color: white;
+  border: none;
+}
+/* .lust:hover {
+  color: rgb(224, 15, 15);
+} */
+
+.love {
+  background: linear-gradient(to right, #40e0d0, #ff8c00, #ff0080);
+  background: -webkit-linear-gradient(to right, #40e0d0, #ff8c00, #ff0080);
+  color: white;
+  border: none;
+}
+a {
+  color: black;
+  text-decoration: none;
+}
+a:hover {
+  color: black;
+  text-decoration: none;
+}
+
+/* .........................changes for the admin store */
+nav {
+  background: -webkit-linear-gradient(
+    to right,
+    #8e2de2,
+    #4a00e0
+  ) !important; /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #8e2de2, #4a00e0) !important;
+}
+nav a {
+  color: white !important;
+}
+.dropdown-item {
+  color: rgb(245, 238, 238) !important;
+}
+.dropdown-menu {
+  background: -webkit-linear-gradient(to right, #8e2de2, #4a00e0) !important;
+  background: linear-gradient(to right, #8e2de2, #4a00e0) !important;
+}
+.dropdown-item:hover {
+  background: linear-gradient(to right, #5905a3, #32058d) !important;
+}
+
+.ch_relative {
+  position: relative;
+  height: 20vh;
+}
+
+.ch_absolute {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-weight: 700;
+}

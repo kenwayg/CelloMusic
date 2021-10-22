@@ -1,0 +1,447 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background-color: rgb(235, 232, 232);
+}
+nav {
+  width: 100%;
+  background: red;
+  display: flex;
+  align-items: center;
+  height: 8vh;
+  position: fixed;
+  z-index: 999;
+}
+.first_nav_links {
+  display: flex;
+
+  list-style: none;
+}
+.first_nav_links li {
+  text-align: center;
+
+  padding: 15px 25px;
+  border-right: 1px solid black;
+}
+.inp {
+  padding: 6px 120px;
+}
+.sec_nav_links {
+  display: flex;
+  list-style-type: none;
+}
+.sec_nav_links li {
+  padding: 15px 5px;
+  margin-left: 70px;
+}
+a {
+  text-decoration: none;
+  color: black;
+}
+.hero {
+  position: relative;
+  width: 95%;
+  height: 350px;
+  margin: auto;
+  /* background-color: rgb(197, 194, 194); */
+}
+.hero_image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.library {
+  min-height: 100vh;
+  position: relative;
+  background-color: white;
+  width: 95%;
+  margin: auto;
+}
+.editablw {
+  display: flex;
+  /* background: turquoise; */
+  /* width: 100%; */
+  margin-top: 30px;
+  margin-bottom: 30px;
+  height: 100vh;
+}
+.music_section {
+  flex: 0.7;
+  border-right: 1px solid rgb(148, 146, 146);
+}
+.follower_side {
+  flex: 0.3;
+}
+ul {
+  /* flex-direction: row; */
+  width: 100%;
+}
+.list {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  padding: 10px;
+  /* margin: 5px; */
+  /* background: rgb(172, 133, 62); */
+}
+.list li {
+  margin: 10px;
+  padding: 9px;
+  transition: 0.5s ease-out;
+}
+hr {
+  margin-top: -21px;
+}
+.list li:hover {
+  transition: all 0.6s ease-in;
+  border-bottom: 1px solid black;
+}
+.upload_note {
+  display: flex;
+  top: 50%;
+
+  flex-direction: column;
+  left: 0;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  transform: translate(50%, 50%);
+}
+.upload_note a {
+  color: darkblue;
+}
+.upload_note button {
+  padding: 10px 10px;
+  cursor: pointer;
+  background-color: brown;
+  color: #f1f1f1;
+  border-radius: 5px;
+}
+
+.user_img {
+  position: absolute;
+  top: 20%;
+  left: 15px;
+  border-radius: 50%;
+  width: 230px;
+  height: 245px;
+  background: rosybrown;
+}
+.user_img img {
+  object-fit: cover;
+  border-radius: 100%;
+  width: 100%;
+  height: 100%;
+}
+.td {
+  position: absolute;
+  bottom: 10%;
+  left: 45px;
+  padding: 5px 20px;
+  border: none;
+  border-radius: 5px;
+  background: #ffffff;
+  z-index: 999;
+  pointer-events: none;
+  cursor: pointer;
+}
+.upload_image input[type="file"] {
+  position: absolute;
+  bottom: 10%;
+  left: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.profile_name {
+  position: absolute;
+  top: 20%;
+  left: 22%;
+  font-size: 1.2rem;
+  padding: 15px 20px;
+  background: black;
+  color: white;
+}
+button {
+  cursor: pointer;
+}
+.slu {
+  position: absolute;
+  z-index: 999;
+  padding: 5px 20px;
+  display: block;
+  top: 40%;
+  right: 4%;
+  pointer-events: none;
+}
+.upload_header input {
+  cursor: pointer;
+  position: absolute;
+  top: 43%;
+  right: -10;
+  opacity: 0;
+}
+#modal_section {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  display: none;
+  overflow: auto;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.638);
+}
+.closeBtn {
+  float: right;
+  font-size: 30px;
+  color: rgb(8, 75, 199);
+  cursor: pointer;
+}
+.modal_content {
+  position: relative;
+  background: #fff;
+  width: 70%;
+  height: 40%;
+  margin: 20px auto;
+  animation: modOpen 2s;
+}
+.mod_btn {
+  position: absolute;
+  bottom: 40;
+  right: 20;
+}
+@keyframes modOpen {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+#modal_section2 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  display: none;
+  overflow: auto;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.638);
+}
+.closeBtn2 {
+  float: right;
+  font-size: 30px;
+  color: rgb(8, 75, 199);
+  cursor: pointer;
+}
+.modal_content2 {
+  position: relative;
+  background: #fff;
+  width: 70%;
+  height: 40%;
+  margin: 20px auto;
+  animation: modOpen2 2s;
+}
+.mod_btn2 {
+  position: absolute;
+  bottom: 40;
+  right: 20;
+}
+@keyframes modOpen2 {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ////MUSIC PLAYER */
+/* line 5, ../scss/_audio-player.scss */
+
+/* line 8, ../scss/_audio-player.scss */
+#music-player img {
+  height: 50px;
+  max-width: 100%;
+  /* height: auto; */
+}
+
+/* line 13, ../scss/_audio-player.scss */
+#music-player {
+  background-color: #1d1d1d;
+  width: 100%;
+  padding: 10px 0;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 999;
+}
+/* line 23, ../scss/_audio-player.scss */
+#music-player .inner {
+  display: flex;
+  position: relative;
+  max-width: 940px;
+  padding: 0 20px;
+  margin: 0 auto;
+}
+
+/* line 34, ../scss/_audio-player.scss */
+.controls {
+  width: 130px;
+  float: left;
+  display: flex;
+  justify-content: flex-start;
+}
+/* line 39, ../scss/_audio-player.scss */
+.controls img {
+  vertical-align: middle;
+}
+/* line 42, ../scss/_audio-player.scss */
+.controls a {
+  align-self: center;
+}
+/* line 45, ../scss/_audio-player.scss */
+.controls .previous {
+  margin-right: 12px;
+}
+/* line 47, ../scss/_audio-player.scss */
+.controls .previous img {
+  width: 14px;
+}
+/* line 51, ../scss/_audio-player.scss */
+.controls .play,
+.controls .pause {
+  margin-right: 12px;
+}
+/* line 53, ../scss/_audio-player.scss */
+.controls .play img,
+.controls .pause img {
+  width: 30px;
+}
+/* line 57, ../scss/_audio-player.scss */
+.controls .next {
+  margin-right: 45px;
+}
+/* line 59, ../scss/_audio-player.scss */
+.controls .next img {
+  width: 14px;
+}
+
+/* line 64, ../scss/_audio-player.scss */
+.play-bar {
+  height: 35px;
+  float: left;
+  margin-right: 30px;
+  display: flex;
+  justify-content: flex-start;
+  flex: 1;
+}
+/* line 71, ../scss/_audio-player.scss */
+.play-bar span {
+  color: #ffffff;
+  font-size: 0.8em;
+  align-self: center;
+}
+/* line 77, ../scss/_audio-player.scss */
+.play-bar .bar-bg {
+  background-color: #ffffff;
+  width: 100%;
+  height: 6px;
+  border-radius: 10px;
+  align-self: center;
+  margin: 0 5px;
+}
+/* line 85, ../scss/_audio-player.scss */
+.play-bar .bar-bg .progress {
+  background-color: #ffc964;
+  height: 6px;
+  border-radius: 10px;
+  width: 0%;
+}
+
+/* line 93, ../scss/_audio-player.scss */
+.song-content {
+  width: 220px;
+  height: 35px;
+  float: left;
+  display: flex;
+  justify-content: flex-start;
+}
+/* line 99, ../scss/_audio-player.scss */
+.song-content .user-info {
+  display: flex;
+  justify-content: flex-start;
+}
+/* line 103, ../scss/_audio-player.scss */
+.song-content .user-info .img-wrapper {
+  width: 30px;
+  margin-right: 12px;
+}
+/* line 108, ../scss/_audio-player.scss */
+.song-content .user-info .song-info {
+  padding: 0;
+  align-self: center;
+  margin-top: -10px;
+  text-align: left;
+}
+/* line 114, ../scss/_audio-player.scss */
+.song-content .user-info .song-info .artist {
+  display: inline-block;
+  color: #ffc964;
+  font-size: 0.8em;
+  line-height: 1.2em;
+  display: block;
+}
+/* line 122, ../scss/_audio-player.scss */
+.song-content .user-info .song-info .song {
+  color: #ffffff;
+  font-size: 0.8em;
+  line-height: 1.2em;
+  display: block;
+}
+
+/* line 132, ../scss/_audio-player.scss */
+.comment-icon {
+  height: 30px;
+  display: flex;
+  justify-content: flex-end;
+  margin-left: auto;
+}
+/* line 138, ../scss/_audio-player.scss */
+.comment-icon a {
+  position: relative;
+  align-self: center;
+}
+/* line 142, ../scss/_audio-player.scss */
+.comment-icon a img {
+  width: 26px;
+  vertical-align: middle;
+}
+/* line 147, ../scss/_audio-player.scss */
+.comment-icon a span {
+  position: absolute;
+  top: -3px;
+  right: -5px;
+  background-color: #ffc964;
+  color: #1d1d1d;
+  display: block;
+  text-align: center;
+  width: 15px;
+  height: 15px;
+  line-height: 15px;
+  font-weight: bold;
+  font-size: 0.5em;
+  border-radius: 50%;
+}
+.blue {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: rgb(121, 3, 3);
+}

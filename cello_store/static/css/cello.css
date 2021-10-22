@@ -1,0 +1,68 @@
+/* ..................root default */
+.lust {
+  background: linear-gradient(to top, #333333, #dd1818) !important;
+  color: white;
+  border: none;
+}
+/* .lust:hover {
+  color: rgb(224, 15, 15);
+} */
+
+.love {
+  background: linear-gradient(to right, #40e0d0, #ff8c00, #ff0080);
+  background: -webkit-linear-gradient(to right, #40e0d0, #ff8c00, #ff0080);
+  color: white;
+  border: none;
+}
+/* a {
+  color: black;
+  text-decoration: none;
+} */
+/* a:hover {
+  color: black;
+  text-decoration: none;
+} */
+
+/* .........................changes for the lcello store */
+
+.ch_length {
+  width: 27vw !important;
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+  color: white !important;
+}
+.ch_back {
+  background-color: rgba(19, 18, 18, 0.664) !important;
+}
+.profile {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+.ye {
+  margin: 15rem;
+}
+.form-group {
+  padding: rem;
+  margin: 2rem;
+}
+.form-group select {
+  padding: 5px;
+}
+.container {
+  background-color: rgb(201, 3, 118);
+  width: 100%;
+  padding: 10px 5px;
+}
+.btn-block {
+  padding: 5px 15px;
+  border-radius: 5px;
+}
+.ter {
+  padding: 15px;
+}
+form {
+  height: 100vh;
+  width: 100%;
+}
